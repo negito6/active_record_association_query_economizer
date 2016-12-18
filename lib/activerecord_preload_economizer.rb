@@ -1,4 +1,4 @@
-require "activerecord/preload/economizer/version"
+require "activerecord_preload_economizer/version"
 
 module Activerecord
   module Preload
