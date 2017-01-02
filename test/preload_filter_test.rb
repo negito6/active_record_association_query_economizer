@@ -11,4 +11,8 @@ describe 'preload' do
   it 'got preloaded associations' do
     assert User.where(id: @user_postable.id).preload(:posts).first.posts.size.must_equal 2
   end
+
+  it 'all associations are filtered' do
+    assert User.where(id: @user_not_postable.id).preload(:posts).first.posts.size.must_equal 0
+  end
 end

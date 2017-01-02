@@ -5,12 +5,24 @@ module ActiveRecord
   module Associations
     module Builder
       class Association #:nodoc:
+        self.valid_options += [:preload_if]
       end
     end
     class Preloader
       class Association #:nodoc:
+        def preload_filter
+          options[:preload_if]
+        end
+
+        def owners_filtered
+          # owners_by_key is: {1=>[#<SourceModel ...>, 2=>[#<SourceModel ...>], ...}
+          owners_by_key.select do |key, records|
+            records.all?(&preload_filter)
+          end
+        end
+
         def associated_records_by_owner(preloader)
-          owners_map = owners_by_key
+          owners_map = owners_filtered
           owner_keys = owners_map.keys.compact
 
           # Each record may have multiple owners, and vice-versa
