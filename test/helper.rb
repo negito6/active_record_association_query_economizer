@@ -10,6 +10,7 @@ ActiveRecord::Schema.verbose = false
 ActiveRecord::Schema.define do
   create_table :users do |t|
     t.boolean :postable
+    t.boolean :activated
   end
 
   create_table :posts do |t|
@@ -19,9 +20,11 @@ ActiveRecord::Schema.define do
 end
 
 class User < ActiveRecord::Base
-  has_many :posts, preload_if: -> (record) {
+  has_many :posts, preload_if: [ -> (record) {
     record.postable == true
-  }
+  }, -> (record) {
+    record.activated
+  }]
 end
 
 class Post < ActiveRecord::Base

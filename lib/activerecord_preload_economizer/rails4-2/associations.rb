@@ -10,14 +10,20 @@ module ActiveRecord
     end
     class Preloader
       class Association #:nodoc:
-        def preload_filter
-          options[:preload_if]
+        def preload_filters
+          [options[:preload_if]].flatten.compact
         end
 
         def owners_filtered
           # owners_by_key is: {1=>[#<SourceModel ...>, 2=>[#<SourceModel ...>], ...}
           owners_by_key.select do |key, records|
-            records.all?(&preload_filter)
+            preload_filters.each do |filter|
+              case filter
+              when Proc
+                records.select!(&filter)
+              end
+            end
+            records.present?
           end
         end
 
