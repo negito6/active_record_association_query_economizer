@@ -21,6 +21,8 @@ module ActiveRecord
               case filter
               when Proc
                 records.select!(&filter)
+              when Symbol
+                records.select! { |record| record.send(filter) }
               end
             end
             records.present?
