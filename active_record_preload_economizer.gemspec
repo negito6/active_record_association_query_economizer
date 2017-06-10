@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'activerecord_preload_economizer/version'
+require 'active_record_preload_economizer/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "activerecord_preload_economizer"
-  spec.version       = ActiverecordPreloadEconomizer::VERSION
+  spec.name          = "active_record_preload_economizer"
+  spec.version       = ActiveRecordPreloadEconomizer::VERSION
   spec.authors       = ["toru.yagi"]
 
   spec.summary       = %q{Optimize queries of ActiveRecord preload functions.}
