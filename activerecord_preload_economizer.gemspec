@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'activerecord_preload_economizer/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "activerecord-preload-economizer"
-  spec.version       = Activerecord::Preload::Economizer::VERSION
+  spec.name          = "activerecord_preload_economizer"
+  spec.version       = ActiverecordPreloadEconomizer::VERSION
   spec.authors       = ["toru.yagi"]
 
   spec.summary       = %q{Optimize queries of ActiveRecord preload functions.}
