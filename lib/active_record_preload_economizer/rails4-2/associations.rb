@@ -29,6 +29,7 @@ module ActiveRecord
           end
         end
 
+        remove_method :associated_records_by_owner
         def associated_records_by_owner(preloader)
           owners_map = owners_filtered
           owner_keys = owners_map.keys.compact
