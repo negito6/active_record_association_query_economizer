@@ -17,7 +17,7 @@ module ActiveRecord
 
         def owners_filtered
           unless defined?(@owners_filtered)
-            @owners_filtered = owners
+            @owners_filtered = owners.dup
             preload_filters.each do |filter|
               case filter
               when Proc
