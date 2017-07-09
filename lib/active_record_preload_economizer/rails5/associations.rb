@@ -30,6 +30,7 @@ module ActiveRecord
           @owners_filtered
         end
 
+        remove_method :owner_keys
         def owner_keys
           unless defined?(@owner_keys)
             @owner_keys = owners_filtered.map do |owner|
