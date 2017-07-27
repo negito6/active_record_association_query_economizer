@@ -5,20 +5,20 @@ module ActiveRecord
   module Associations
     module Builder
       class Association #:nodoc:
-        VALID_OPTIONS += [:preload_if]
+        VALID_OPTIONS += [:only]
       end
     end
 
     class Preloader
       class Association #:nodoc:
-        def preload_filters
-          [options[:preload_if]].flatten.compact
+        def association_filters
+          [options[:only]].flatten.compact
         end
 
         def owners_filtered
           unless defined?(@owners_filtered)
             @owners_filtered = owners.dup
-            preload_filters.each do |filter|
+            association_filters.each do |filter|
               case filter
               when Proc
                 @owners_filtered.select!(&filter)

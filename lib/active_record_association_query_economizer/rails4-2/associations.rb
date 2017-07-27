@@ -5,19 +5,19 @@ module ActiveRecord
   module Associations
     module Builder
       class Association #:nodoc:
-        self.valid_options += [:preload_if]
+        self.valid_options += [:only]
       end
     end
     class Preloader
       class Association #:nodoc:
-        def preload_filters
-          [options[:preload_if]].flatten.compact
+        def association_filters
+          [options[:only]].flatten.compact
         end
 
         def owners_filtered
           # owners_by_key is: {1=>[#<SourceModel ...>, 2=>[#<SourceModel ...>], ...}
           owners_by_key.select do |key, records|
-            preload_filters.each do |filter|
+            association_filters.each do |filter|
               case filter
               when Proc
                 records.select!(&filter)

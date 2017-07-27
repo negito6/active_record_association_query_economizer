@@ -20,7 +20,7 @@ ActiveRecord::Schema.define do
 end
 
 class User < ActiveRecord::Base
-  has_many :posts, preload_if:[ -> (record) {
+  has_many :posts, only:[ -> (record) {
     record.postable == true
   }, :active?]
 
