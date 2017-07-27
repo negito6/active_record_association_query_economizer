@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'minitest/autorun'
 require 'minitest/spec'
 require 'active_record'
-require 'active_record_preload_economizer'
+require 'active_record_association_query_economizer'
 
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 
