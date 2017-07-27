@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '>= 3'
   spec.add_development_dependency 'sqlite3', '~> 1.3'
 
-  spec.add_runtime_dependency 'activerecord', '>= 4.2', '< 5'
+  spec.add_runtime_dependency 'activerecord', '>= 4.2', '<= 5.1.1'
 
 end
