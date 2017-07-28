@@ -9,6 +9,62 @@ module ActiveRecord
       end
     end
 
+    class Association #:nodoc:
+      def association_filters
+        [options[:only]].flatten.compact
+      end
+
+      def associated?
+        association_filters.all? do |filter|
+          case filter
+          when Proc
+            filter.call(owner)
+          when Symbol
+            owner.send(filter)
+          end
+        end
+      end
+
+      def load_target
+        @target = find_target if associated? && ((@stale_state && stale_target?) || find_target?)
+
+        loaded! unless loaded?
+        target
+      rescue ActiveRecord::RecordNotFound
+        reset
+      end
+    end
+    class CollectionAssociation < Association #:nodoc:
+      def load_target
+        if !associated?
+          @target = []
+        elsif find_target?
+          @target = merge_target_lists(find_target, target)
+        end
+
+        loaded!
+        target
+      end
+      def size
+        if !associated?
+          return 0
+        elsif !find_target? || loaded?
+          if association_scope.distinct_value
+            target.uniq.size
+          else
+            target.size
+          end
+        elsif !loaded? && !association_scope.group_values.empty?
+          load_target.size
+        elsif !loaded? && !association_scope.distinct_value && target.is_a?(Array)
+          unsaved_records = target.select { |r| r.new_record? }
+          unsaved_records.size + count_records
+        else
+          count_records
+        end
+      end
+    end
+
     class Preloader
       class Association #:nodoc:
         def association_filters
