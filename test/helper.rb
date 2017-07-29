@@ -17,6 +17,11 @@ ActiveRecord::Schema.define do
     t.string :body
     t.references :user
   end
+
+  create_table :profiles do |t|
+    t.string :name
+    t.references :user
+  end
 end
 
 class User < ActiveRecord::Base
@@ -24,11 +29,17 @@ class User < ActiveRecord::Base
     record.postable == true
   }, :active?]
 
+  has_one :profile, preload_if: :active?
+
   def active?
     activated
   end
 end
 
 class Post < ActiveRecord::Base
+  belongs_to :user
+end
+
+class Profile < ActiveRecord::Base
   belongs_to :user
 end
