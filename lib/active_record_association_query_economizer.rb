@@ -1,4 +1,5 @@
 require "active_record_association_query_economizer/version"
+require 'active_record_association_query_economizer/association_extension'
 
 activerecord_version = ActiveRecord.version
 case activerecord_version

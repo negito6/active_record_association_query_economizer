@@ -5,7 +5,7 @@ module ActiveRecord
   module Associations
     module Builder
       class Association #:nodoc:
-        VALID_OPTIONS += [:preload_if]
+        self.extensions << ActiveRecordAssociationQueryEconomizer::AssociationExtension.new
       end
     end
 
