@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 class SampleObject < ActiveRecord::Base
   has_many :sample_associations, preload_if: [:one_condition?, :another_condition?]
 
@@ -38,7 +38,7 @@ end
 
 (Proc)
 
-```
+```ruby
 class SampleObject < ActiveRecord::Base
   has_many :sample_associations, preload_if: -> (record) {
     true
