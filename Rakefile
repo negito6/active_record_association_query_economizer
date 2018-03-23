@@ -13,9 +13,29 @@ task :default => :test
 pwd = File.expand_path('../', __FILE__)
 
 gemfiles = %w(
-  activerecord-42
-  activerecord-50
-  activerecord-51
+  activerecord-420
+  activerecord-421
+  activerecord-422
+  activerecord-423
+  activerecord-424
+  activerecord-425
+  activerecord-426
+  activerecord-427
+  activerecord-428
+  activerecord-429
+  activerecord-500
+  activerecord-501
+  activerecord-502
+  activerecord-503
+  activerecord-504
+  activerecord-505
+  activerecord-506
+  activerecord-510
+  activerecord-511
+  activerecord-512
+  activerecord-513
+  activerecord-514
+  activerecord-515
 )
 
 namespace :test do
