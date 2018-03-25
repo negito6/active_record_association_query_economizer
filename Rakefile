@@ -12,31 +12,15 @@ task :default => :test
 
 pwd = File.expand_path('../', __FILE__)
 
-activerecord_versions = %w(
-  4.2.0
-  4.2.1
-  4.2.2
-  4.2.3
-  4.2.4
-  4.2.5
-  4.2.6
-  4.2.7
-  4.2.8
-  4.2.9
-  5.0.0
-  5.0.1
-  5.0.2
-  5.0.3
-  5.0.4
-  5.0.5
-  5.0.6
-  5.1.0
-  5.1.1
-  5.1.2
-  5.1.3
-  5.1.4
-  5.1.5
-)
+
+# set an array ["4.2.0", "4.2.1", ... "4.2.9", "5.0.0", "5.0.1", ... "5.1.0", ... "5.1.5"]
+activerecord_versions =
+  { "4.2" => (0..9).to_a,
+    "5.0" => (0..6).to_a,
+    "5.1" => (0..5).to_a,
+  }.map do |base_version, tiny_versions|
+    tiny_versions.map { |tiny| "#{base_version}.#{tiny}" }
+  end.flatten
 
 namespace :test do
   activerecord_versions.each do |activerecord_version|
