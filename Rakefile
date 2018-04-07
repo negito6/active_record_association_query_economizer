@@ -19,7 +19,7 @@ activerecord_versions =
     "5.0" => (0..6).to_a,
     "5.1" => (0..5).to_a,
   }.map do |base_version, tiny_versions|
-    tiny_versions.map { |tiny| "#{base_version}.#{tiny}" }
+    tiny_versions.map { |tiny_version| "#{base_version}.#{tiny_version}" }
   end.flatten
 
 namespace :test do
