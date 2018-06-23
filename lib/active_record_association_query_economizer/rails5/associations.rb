@@ -12,7 +12,7 @@ module ActiveRecord
     class Preloader
       class Association #:nodoc:
         def preload_filters
-          [options[:preload_if]].flatten.compact
+          [reflection.options[:preload_if]].flatten.compact
         end
 
         def owners_filtered

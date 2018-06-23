@@ -12,12 +12,12 @@ task :default => :test
 
 pwd = File.expand_path('../', __FILE__)
 
-
-# set an array ["4.2.0", "4.2.1", ... "4.2.9", "5.0.0", "5.0.1", ... "5.1.0", ... "5.1.6"]
+# set an array ["4.2.0", "4.2.1", ... "4.2.9", "5.0.0", "5.0.1", ... "5.1.0", ... "5.1.6", "5.2.0"]
 activerecord_versions =
   { "4.2" => (0..9).to_a,
     "5.0" => (0..6).to_a,
     "5.1" => (0..6).to_a,
+    "5.2" => [0],
   }.map do |base_version, tiny_versions|
     tiny_versions.map { |tiny_version| "#{base_version}.#{tiny_version}" }
   end.flatten
