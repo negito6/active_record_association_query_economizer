@@ -55,6 +55,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 $ rake test:all
 ```
 
+Run test for ActiveRecord version X.Y.Z
+```
+$ rake test:activerecord-X.Y.Z
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
