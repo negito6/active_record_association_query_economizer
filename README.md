@@ -54,6 +54,15 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/negito
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
+### Install develop version
+```
+cd /path/to/dir
+git clone git@github.com/negito6/active_record_association_query_economizer.git
+cd active_record_association_query_economizer
+rake build
+gem install pkg/active_record_association_query_economizer-X.Y.Z.gem
+```
+
 ### Testing
 ```
 $ rake test:all
