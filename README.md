@@ -1,6 +1,6 @@
 # ActiveRecordAssociationQueryEconomizer
 
-Enables to define preloading conditions in the arguments of `has_many`.
+Enables to define preloading conditions in the arguments of `has_one` / `has_many`.
 
 Condition is defined as an array of symbolized method name or Proc object.
 
