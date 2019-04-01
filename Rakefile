@@ -17,7 +17,7 @@ activerecord_versions =
   { "4.2" => (0..9).to_a,
     "5.0" => (0..6).to_a,
     "5.1" => (0..6).to_a,
-    "5.2" => [0],
+    "5.2" => [0..3].to_a,
   }.map do |base_version, tiny_versions|
     tiny_versions.map { |tiny_version| "#{base_version}.#{tiny_version}" }
   end.flatten
