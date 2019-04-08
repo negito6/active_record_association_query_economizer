@@ -8,5 +8,5 @@ when Gem::Requirement.create(['>= 4.2', '< 5'])
 when Gem::Requirement.create(['>= 5.0', '<= 5.2.0'])
   require 'active_record_association_query_economizer/rails5/associations'
 else
-  Kernel.warn "active_record_association_query_economizer doesn't yet do anything on ActiveRecord #{activerecord_version}"
+  Kernel.warn "active_record_association_query_economizer does nothing on ActiveRecord #{activerecord_version} because not supported."
 end
